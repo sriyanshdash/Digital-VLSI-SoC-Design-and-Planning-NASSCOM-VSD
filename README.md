@@ -565,3 +565,158 @@ Timing analysis models how quickly signals propagate through a gate, ensuring cl
 
 ![Timing Slew Diagram](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/timing_slew.png)
 
+
+# Design library cell using Magic Layout and ngspice characterization
+
+## DAY-3 LAB
+
+This lab introduces the design, layout, and characterization of a custom CMOS inverter standard cell using open-source tools like Magic and ngspice. The goal is to understand the flow from layout design to simulation-based timing analysis.
+
+### Step 1: Clone Repository and Open Layout
+
+Clone the standard cell design repo:
+```bash
+git clone https://github.com/nickson-jose/vsdstdcelldesign
+cd vsdstdcelldesign
+cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+magic -T sky130A.tech sky130_inv.mag &
+```
+
+![Terminal Commands](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/inv_git_clone.png)
+
+### Step 2: Layout in Magic
+
+![Layout in Magic](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/magic_inv.png)
+
+### Step 3: SPICE Extraction and Simulation
+
+Extract SPICE netlist with parasitic components:
+```bash
+# In tkcon window
+extract all
+ext2spice cthresh 0 rthresh 0
+ext2spice
+```
+
+![SPICE Extraction](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/tkcon_extract.png)
+
+Modify the SPICE model file as per the `.lib` specifications.
+
+![Modified SPICE](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/inv_spice.png)
+
+Run simulation:
+```bash
+ngspice sky130_inv.spice
+```
+
+![SPICE Simulation](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/spice_run.png)
+
+Plot waveform:
+```bash
+plot y vs time a
+```
+
+![Waveform](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/y_vs_a_plot.png)
+![Timing Characteristics](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/time_n_delay.png)
+
+### Step 4: Timing Parameter Extraction
+
+- **Rise Time**: 0.06427 ns
+- **Fall Time**: 0.01529 ns
+- **Propagation Delay**: 0.06165 ns
+- **Cell Fall Delay**: 0.028 ns
+
+## Fixing DRC Errors in Layout
+
+Download and unpack DRC testing files:
+```bash
+cd
+wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+tar xfz drc_tests.tgz
+vi .magicrc
+magic -d XR
+```
+
+Open layout and fix DRC errors by modifying the `.tech` file:
+- Add `allpolynonres`
+- Fix spacing issues and untapped nwell violations
+- Re-run DRC:
+```bash
+tech load sky130A.tech
+drc check
+drc why
+```
+
+
+## Pre-layout Timing and Delay Table Introduction
+
+- Delay tables model gate and interconnect delays.
+- Used during static timing analysis (STA).
+- Delay representations include `.lib`, SPEF, RSPF.
+
+## DAY-4 LAB
+
+Set grid for standard cell routing:
+```bash
+grid 0.46um 0.34um 0.23um 0.17um
+```
+
+Verify port alignment and dimensions, then save:
+```bash
+save sky130_vsdinv.mag
+```
+
+Generate and copy LEF file:
+```bash
+lef write
+cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+cp libs/sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+
+Update `config.tcl`:
+```tcl
+set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+```
+
+Run synthesis:
+```bash
+prep -design picorv32a -tag 31-01_17-10 -overwrite
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+run_synthesis
+```
+
+Update strategy and sizing:
+```tcl
+set ::env(SYNTH_STRATEGY) 1
+set ::env(SYNTH_SIZING) 1
+```
+
+Run floorplan:
+```bash
+run_floorplan
+# If error occurs:
+init_floorplan
+place_io
+tap_decap_or
+```
+
+Run placement and open layout in Magic:
+```bash
+run_placement
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-01_17-10/results/placement/
+magic -T /path/to/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+
+## Post-Synthesis Timing Analysis with OpenSTA
+
+Configure files:
+- `pre_sta.conf` in OpenLANE directory
+- `my_base.sdc` in `picorv32a/src`
+
+Extract capacitance from `.lib` and run OpenSTA.
+
