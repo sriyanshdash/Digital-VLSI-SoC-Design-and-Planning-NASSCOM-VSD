@@ -3,11 +3,6 @@
 ![Static Badge](https://img.shields.io/badge/EDA%20Tools-OpenLANE--Flow%2C_Yosys%2C_abc%2C_OpenROAD%2C_TritonRoute%2C_OpenSTA%2C_magic%2C_netgen%2C_GUNA-navy)
 ![Static Badge](https://img.shields.io/badge/languages-verilog%2C_bash%2C_TCL-crimson)
 ![GitHub last commit](https://img.shields.io/github/last-commit/sriyanshdash/Digital-VLSI-SoC-Design-and-Planning-NASSCOM-VSD)
-![GitHub language count](https://img.shields.io/github/languages/count/sriyanshdash/Digital-VLSI-SoC-Design-and-Planning-NASSCOM-VSD)
-![GitHub top language](https://img.shields.io/github/languages/top/sriyanshdash/Digital-VLSI-SoC-Design-and-Planning-NASSCOM-VSD)
-![GitHub repo size](https://img.shields.io/github/repo-size/sriyanshdash/Digital-VLSI-SoC-Design-and-Planning-NASSCOM-VSD)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/sriyanshdash/Digital-VLSI-SoC-Design-and-Planning-NASSCOM-VSD)
-![GitHub repo file count (file type)](https://img.shields.io/github/directory-file-count/sriyanshdash/Digital-VLSI-SoC-Design-and-Planning-NASSCOM-VSD)
 <!---
 Comments
 -->
@@ -22,9 +17,9 @@ In this session, we will delve into the end-to-end process of designing an Appli
 
 # Inception of open-source EDA, OpenLANE and Sky130 PDK
 
-## 🧩 Advanced Breakdown: QFN-48 Packaging, Silicon Die Architecture, IP Integration & RISC-V Based ASIC Design
+## Advanced Breakdown: QFN-48 Packaging, Silicon Die Architecture, IP Integration & RISC-V Based ASIC Design
 
-### 📦 QFN-48 Package Architecture
+### QFN-48 Package Architecture
 
 The **QFN-48 (Quad Flat No-Lead, 48-pin)** is a thermally-enhanced, leadframe-based surface-mount package widely adopted for low-profile, high-performance ICs. It provides:
 - **48 edge-terminal contact pads** for signal I/O and power delivery.
@@ -38,23 +33,23 @@ The **QFN-48 (Quad Flat No-Lead, 48-pin)** is a thermally-enhanced, leadframe-ba
 
 ---
 
-### 🧠 Silicon Die Anatomy: Core, Pads, Macros & IPs
+### Silicon Die Anatomy: Core, Pads, Macros & IPs
 
-### 🔹 **Core**
+### **Core**
 The **core area** is the functional heart of the ASIC where RTL logic is realized as standard cell instances. It includes:
 - **Combinational logic blocks**, pipelined datapaths, FSMs.
 - **Standard Cell Library Instances** (from PDK).
 - **Custom-designed or hard macros** (e.g., SRAMs, PLLs, SerDes).
 - **Clock distribution network**, local routing channels.
 
-### 🔹 **Die**
+### **Die**
 The **die** is the final fabricated silicon area containing:
 - **Core logic area** (placed and routed cells).
 - **Padframe** (I/O and power pad ring).
 - **ESD protection circuitry**, guard rings, and analog IP periphery.
 Fabricated on a silicon wafer, multiple dies are **diced**, **tested**, and **packaged**.
 
-### 🔹 **Pad Ring / Padframe**
+### **Pad Ring / Padframe**
 Surrounding the core, the **pad ring** includes:
 - **Power/Ground Pads** (VDD, VSS).
 - **Input/Output Pads** for signal transmission.
@@ -63,7 +58,7 @@ Surrounding the core, the **pad ring** includes:
 
 ![Die Elements](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/core%2C%20pads%2C%20die.png)
 
-### 🔹 **Macros and Foundry IPs**
+### **Macros and Foundry IPs**
 - **Hard Macros**: Pre-placed, pre-routed blocks (e.g., memory macros, PLLs, IO PHYs).
 - **Soft Macros**: Synthesizable IP cores that integrate into digital flow (e.g., RISC-V cores, UART, SPI).
 - **Foundry IPs** from SkyWater or similar PDKs include:
@@ -76,7 +71,7 @@ Surrounding the core, the **pad ring** includes:
 
 ---
 
-### 🧮 Instruction Set Architecture: RISC-V
+### Instruction Set Architecture: RISC-V
 
 **RISC-V** is a modular, extensible, open-source **ISA (Instruction Set Architecture)**. Unlike proprietary ISAs (e.g., ARM, x86), RISC-V enables silicon designers to:
 - Add **custom extensions** (e.g., DSP, Crypto).
@@ -94,7 +89,7 @@ ISA levels:
 
 ---
 
-### ⚙️ Software-to-Hardware Translation Pipeline
+### Software-to-Hardware Translation Pipeline
 
 The path from high-level software to binary-executable hardware involves several abstraction layers:
 
@@ -115,7 +110,7 @@ At execution, binary instructions interact with:
 
 ---
 
-### 🏗️ RTL2GDSII: ASIC Physical Design Flow
+### RTL2GDSII: ASIC Physical Design Flow
 
 ![ASIC Flow](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/asicflow.png)
 
@@ -144,16 +139,16 @@ ASIC design transforms **Register Transfer Level (RTL)** designs into **GDSII**,
 
 ---
 
-## 🔑 ASIC Build Requirements
+## ASIC Build Requirements
 
 ![ASIC Design](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/asic1.png)
 
-### 🔹 RTL (Register-Transfer Level)
+### RTL (Register-Transfer Level)
 - Describes hardware behavior using **sequential and combinational logic**.
 - Captures **pipeline stages**, **FSMs**, datapaths.
 - Used as input for synthesis tools.
 
-### 🔹 EDA Tools
+### EDA Tools
 - **Yosys**: RTL synthesis.
 - **OpenROAD**: Floorplanning, placement, CTS, routing.
 - **Magic**: Layout generation and DRC.
@@ -161,7 +156,7 @@ ASIC design transforms **Register Transfer Level (RTL)** designs into **GDSII**,
 - **Netgen**: Schematic/layout equivalence.
 - **OpenSTA**: Timing verification.
 
-### 🔹 PDK (Process Design Kit)
+### PDK (Process Design Kit)
 Includes:
 - **Technology LEF/DEF files**
 - **DRC/LVS rules**
@@ -170,7 +165,7 @@ Includes:
 
 ---
 
-## 🧪 OpenLane & StriVe SoCs
+## OpenLane & StriVe SoCs
 
 **OpenLane** is a fully open-source RTL-to-GDSII ASIC design flow built using top-tier open tools and compatible with Sky130 PDK. It supports:
 - **Macro hardening**
@@ -179,14 +174,14 @@ Includes:
 
 ![StriVe](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/striVe.png)
 
-### 🧬 StriVe Chipsets
+### StriVe Chipsets
 - Developed using OpenLane
 - Based on **RISC-V architecture**
 - Focused on **ultra-low-power**, **custom accelerators**, and **scalable IP integration**
 - Enable community-driven, open-source SoC tapeouts and silicon prototyping
 
 ---
-## 📌 Introduction
+## Introduction
 
 This project walks through the full Application-Specific Integrated Circuit (ASIC) digital backend design flow using the **OpenLANE EDA toolchain** and **Sky130 PDK**. The RTL design under consideration is **picorv32a**, a minimalistic and highly configurable RISC-V core.
 
@@ -200,7 +195,7 @@ Through this, we explore:
 
 ---
 
-## 🧰 Technology Stack
+## Technology Stack
 
 | Layer           | Tool/Resource                           |
 |-----------------|------------------------------------------|
@@ -214,7 +209,7 @@ Through this, we explore:
 
 ---
 
-## 🗂️ Project Directory Structure
+## Project Directory Structure
 
 ```
 openlane/
@@ -233,32 +228,36 @@ openlane/
 
 ---
 
-## 🚀 Flow Execution Steps
+## Flow Execution Steps
 
-### 1️⃣ Launch Docker
+### Launch Docker
 
 ```bash
 docker
 ./flow.tcl -interactive
 ```
+![flow tcl -interactive](https://github.com/user-attachments/assets/18d2ce1b-142d-4e23-a3bd-5bf9ab860d77)
 
-### 2️⃣ Load OpenLANE Environment
+### Load OpenLANE Environment
 
 ```tcl
 % package require openlane 0.9
 ```
+![flow tcl -interactive](https://github.com/user-attachments/assets/58e9a24a-d619-408d-87d5-514cee64e05b)
 
-### 3️⃣ Prepare Design
+### Prepare Design
 
 ```tcl
 % prep -design picorv32a
 ```
+![prep -design file](https://github.com/user-attachments/assets/8bdfe015-0e2f-416b-8724-4368fdd9e1a9)
 
 Creates `runs/picorv32a/<timestamp>` directory with initialized config and setup files.
+![runs file](https://github.com/user-attachments/assets/b230cfbb-50f7-4fd1-a77a-6d4587d05885)
 
 ---
 
-## 🔧 Synthesis (`run_synthesis`)
+## Synthesis (`run_synthesis`)
 
 The RTL is synthesized using **Yosys**, converting Verilog to gate-level netlist using Sky130 standard cells.
 
@@ -266,55 +265,57 @@ The RTL is synthesized using **Yosys**, converting Verilog to gate-level netlist
 - `1-yosys_4.stat.rpt`: Gate stats
 - Flip-flop count = 1613  
 - Total cell count = 14876  
+![no of d ffs](https://github.com/user-attachments/assets/12e0d158-ba37-474f-88c8-338413070fea)
 
-📊 **Flop Ratio**:
+ **Flop Ratio**:
 ```
 = 1613 / 14876 ≈ 0.1084 → ~10.84%
 ```
+![count of dffs](https://github.com/user-attachments/assets/8d7129ac-eb46-414d-bc95-16b46c95b275)
 
 > Indicates sequential vs combinational complexity of the design.
 
 ---
 
-## 🧱 Floorplanning (`run_floorplan`)
+## Floorplanning (`run_floorplan`)
 
 Defines die/core dimensions, IO pins, and power planning.
 
-### ⚙️ Key Parameters
+### Key Parameters
 - **Core Utilization**: Area used by cells ÷ total core area
 - **Aspect Ratio**: Height ÷ Width of the core
 - **Pin Offset, Padding, Power Rings**: Configurable
 
-🟩 Good floorplans offer:
+ Good floorplans offer:
 - Efficient routing
 - Less congestion
 - Better timing closure
 
 ---
 
-## 🏗️ Placement (`run_placement`)
+## Placement (`run_placement`)
 
 Places standard cells on the chip respecting netlist connectivity and physical constraints.
 
-🗂️ Outputs:
+ Outputs:
 - `placement.def`
 - Congestion maps
 - Global & detailed placement metrics
 
 ---
 
-## 🔁 Clock Tree Synthesis (`run_cts`)
+## Clock Tree Synthesis (`run_cts`)
 
 Performs insertion of clock buffers and routing to ensure balanced clock latency (using OpenROAD's `TritonCTS`).
 
-🎯 Objectives:
+ Objectives:
 - Minimize **clock skew**
 - Reduce **hold/setup violations**
 - Ensure **synchronous operation** across the design
 
 ---
 
-## 🔌 Routing (`run_routing`)
+## Routing (`run_routing`)
 
 Performs global and detailed routing using Sky130 metal stack (6 layers).
 
@@ -325,9 +326,9 @@ Performs global and detailed routing using Sky130 metal stack (6 layers).
 
 ---
 
-## 🔍 Verification
+## Verification
 
-### ✅ Static Timing Analysis (STA)
+### Static Timing Analysis (STA)
 
 ```tcl
 % run_sta
@@ -337,7 +338,7 @@ Performs global and detailed routing using Sky130 metal stack (6 layers).
 - Checks for slack violations
 - Reports critical paths and max delay
 
-### ✅ Layout vs Schematic (LVS)
+### Layout vs Schematic (LVS)
 
 ```tcl
 % run_lvs
@@ -345,7 +346,7 @@ Performs global and detailed routing using Sky130 metal stack (6 layers).
 
 - Ensures layout matches synthesized netlist
 
-### ✅ Design Rule Checking (DRC)
+### Design Rule Checking (DRC)
 
 ```tcl
 % run_drc
@@ -355,7 +356,7 @@ Performs global and detailed routing using Sky130 metal stack (6 layers).
 
 ---
 
-## 📦 GDSII Generation
+## GDSII Generation
 
 ```tcl
 % run_magic
@@ -371,11 +372,11 @@ Generates:
 
 ---
 
-## 🧠 About Sky130 PDK
+## About Sky130 PDK
 
 The **Sky130 Process Design Kit** is an open-source 130nm CMOS technology node, developed by **SkyWater** and **Google**.
 
-🧩 Components:
+Components:
 - DRC/LVS rules
 - Standard Cell Libraries (`sky130_fd_sc_hd`, `sky130_fd_io`)
 - Device Models (BSIM4)
@@ -383,7 +384,7 @@ The **Sky130 Process Design Kit** is an open-source 130nm CMOS technology node, 
 
 ---
 
-## 📋 Final Summary Table
+## Final Summary Table
 
 | Step        | Command             | Output Files                      |
 |-------------|---------------------|-----------------------------------|
@@ -398,7 +399,7 @@ The **Sky130 Process Design Kit** is an open-source 130nm CMOS technology node, 
 
 ---
 
-## 📘 References
+## References
 
 - 🔗 [OpenLANE](https://github.com/The-OpenROAD-Project/OpenLane)
 - 🔗 [Sky130 PDK](https://github.com/google/skywater-pdk)
@@ -425,33 +426,63 @@ This documentation outlines **Day-2** of the ASIC physical design flow using **O
 
 ---
 
-## 🗺️ Floorplanning with OpenLANE
+## Floorplanning with OpenLANE
 
 Floorplanning defines the die/core dimensions, IO locations, cell rows, and power planning. It sets the foundation for all downstream physical design steps.
 
-### ▶️ Run Floorplan:
+### Good floorplan vs bad floorplan and introduction to library cells
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/w_h_core.png)
+Utilization Factor and Aspect Ratio:<br/>
+To determine the Utilization Factor and Aspect Ratio, it is essential to first define the height and width of both the core and die areas.<br/>
+The core area refers to the region within a chip that accommodates all the logic cells and circuit components. This is where the primary logic operations take place.<br/>
+The die area, on the other hand, encompasses the core and serves as the space for placing I/O components and connections.<br/>
+The dimensions of the core area are determined by the netlist of the design, which specifies the number of components required to implement the logic. Consequently, the height and width of the die area are dictated by the dimensions of the core area.<br/><br/>
+For instance, consider a netlist consisting of two logic gates and two flip-flops, each occupying an area of 1 square unit. Since the netlist includes a total of four elements, the minimum core area required to accommodate these components would be 4 square units.<br/>
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/eg_netlist.png) ![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/w_h_netlist.png)
+Utilization Factor: <br/>
+The Utilization Factor is the ratio of the area occupied by the netlist to the total available core area. For an optimized FloorPlan, the Utilization Factor should be less than 1. If it reaches 1, there won’t be any extra space for adding additional logic, making the FloorPlan 100% utilized. <br/>
+Utilization Factor = Area occupied by netlist / Total core area <br/>
+
+Aspect Ratio: <br/>
+The Aspect Ratio represents the proportion between the height and width of the core. A core with an aspect ratio of 1 forms a square, whereas any other value results in a rectangular shape.<br/>
+Aspect Ratio = Height of the core / Width of the core<br/>
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/min_area_netlist.png)
+
+In this case,<br/>
+Utilization Factor = (4 x 1 sq. unit)/(2 unit x 2 unit) = 1<br/>
+Hence, the core area is 100% utilized by the netlist.<br/>
+Aspect Rtio = (2 unit)/(2 unit) = 1<br/>
+Hence, the core has a square shape.<br/>
+​
+<br/>Now, after adding pre-placed cells, decoupling capacitors, power planning and pin placement the corresponding floorplan will look like:<br/>
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/fp_concepts.png)
+
+### Run Floorplan:
 
 ```
 run_floorplan
 ```
 
-![Running Floorplan](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/fp_run.png)
+![floorplan command run](https://github.com/user-attachments/assets/8a3c36f1-060c-44ed-a0b3-19aad8641ec7)
+
 
 The `results/floorplan/` directory contains the output `.def` file, which encodes key geometric and placement information such as die area, core rows, pin locations, and macro outlines.
 
-![DEF Floorplan Output](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/fp_diearea.png)
+![floorplan def file](https://github.com/user-attachments/assets/df5a9312-b012-4e8d-bb17-013344f8dae6)
+
 
 ---
 
-### 🧩 View Floorplan in Magic:
+### View Floorplan in Magic:
 
 ```
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech \
 lef read ../../tmp/merged.lef \
 def read picorv32a.floorplan.def &
 ```
+![floorplan in magic 1](https://github.com/user-attachments/assets/dd3d84c1-766a-4f9b-914d-bead24aeb695)
 
-![Magic Floorplan View](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/magic_fp.png)
+![floorplan in magic 2](https://github.com/user-attachments/assets/26fa08c9-b370-494e-8d61-32b2319dba57)
 
 #### 🛠 Magic Tool Shortcuts:
 
@@ -467,34 +498,35 @@ def read picorv32a.floorplan.def &
 > - Hover & press `S`  
 > - In `tkcon`, type `what`  
 
-![tkcon What Command](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/tkcon_fp.png)
+![floorplan in magic 3](https://github.com/user-attachments/assets/42977a48-64c2-4ae5-98ab-32049074cf39)
 
 ---
 
-## 🧱 Placement using OpenLANE
+## Placement using OpenLANE
 
-Placement assigns physical locations to standard cells within the core while optimizing timing, area, and routing congestion.
+Placement in VLSI (Very Large Scale Integration) is a critical step in the physical design flow, where standard cells, macros, and IP blocks are assigned precise physical locations within the chip’s core area. This stage directly follows logic synthesis and precedes routing, with the primary objective of optimizing the design for performance, power, and area (PPA).
 
-It consists of:
-- **Global Placement**: Coarse cell distribution (minimize wirelength)
-- **Detailed Placement**: Fine-tunes positions for legal, DRC-clean layout
+The placement process is typically divided into two main phases: **global placement** and **detailed placement**. During global placement, cells are distributed across the chip to minimize total wirelength and reduce congestion, often allowing for temporary overlaps and relaxed alignment constraints to achieve a rough but optimized arrangement. Analytical, partitioning-based, and stochastic optimization algorithms are commonly employed in this phase to efficiently handle large-scale designs. Following global placement, detailed placement refines the cell positions to eliminate overlaps, ensure alignment with site rows, and further optimize for timing and routability. This phase leverages incremental and local optimization techniques to fine-tune the layout and address any remaining design rule violation.
+
+After establishing the floorplan with the desired utilization factor and aspect ratio, placement begins by mapping the synthesized netlist onto the chip’s core. Special attention is paid to the placement of IO pins and the minimization of interconnect lengths, as longer wires can introduce significant timing delays. To mitigate these delays and maintain signal integrity, buffers are strategically inserted in critical paths where the distance between standard cells or between a standard cell and an IO pin exceeds predefined thresholds. This approach ensures that timing constraints are met and that the overall design remains robust and manufacturable.
+
+![chrome_iXJtmHj6Tp](https://github.com/user-attachments/assets/0ac0c555-2eff-4d70-a126-86656c8617bf)
+
+![chrome_R2xVsZ8ZFy](https://github.com/user-attachments/assets/e7607eb0-334b-4c13-b825-a57ed6283d33)
 
 ---
 
-### ▶️ Run Placement:
+### Run Placement:
 
 ```
 run_placement
 ```
 
-![Running Placement](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/plcmt_run.png)
-
-![Placement Wirelength](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/wiring_plcmt.png)
-![Detailed Placement](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/detailed_plcmt.png)
+![placement command run](https://github.com/user-attachments/assets/d3d7aed5-9279-4754-9557-d300e934a555)
 
 ---
 
-### 🧩 View Placement in Magic:
+### View Placement in Magic:
 
 ```
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech \
@@ -502,16 +534,21 @@ lef read ../../tmp/merged.lef \
 def read picorv32a.placement.def &
 ```
 
-![Placement in Magic](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/magic_plcmt.png)
-![Zoomed Placement](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/zoomed_plcmt.png)
+![placement in magic](https://github.com/user-attachments/assets/0cca44b3-3891-4a2c-ad63-9020de4ac201)
+![zoomed placement](https://github.com/user-attachments/assets/764040b9-b30b-466d-a539-57706eb806e3)
 
 ---
 
-## 📚 Standard Cell Characterization Flow
+## What are Standard Cells and What is the Standard Cell Characterization Flow
 
+Standard cells are pre-designed, pre-characterized, and pre-verified logic blocks that form the fundamental building blocks of digital integrated circuits, particularly in ASIC and VLSI design. Each standard cell encapsulates a specific logic function—such as AND, OR, NOT gates, or more complex functions like flip-flops and multiplexers—and is designed to a fixed height and footprint for easy integration and automated placement and routing. This modular approach allows designers to focus on higher-level circuit design while leveraging reliable, well-tested components.
+
+The standard cell characterization flow in VLSI involves analyzing and modeling the electrical behavior of these cells so that their performance can be accurately represented in design tools. The process typically includes designing the cell at the transistor level, creating its layout, extracting parasitics to model real-world effects, and then simulating the cell under various conditions to measure timing, power, and noise characteristics. The results are compiled into a Liberty (.lib) file, which is used by synthesis, placement, and routing tools to ensure accurate timing closure and power estimation.
+
+GUNA is a commercial characterization software tool used in the VLSI industry to automate the extraction of timing, noise, and power models from standard cells. By feeding GUNA the transistor-level netlist, technology models, and simulation stimuli, it runs simulations across different process, voltage, and temperature (PVT) corners. GUNA then processes the results to generate the required Liberty (.lib) files, providing EDA tools with the necessary data for accurate digital implementation and verification. This automation streamlines the characterization process, making it efficient and scalable for large standard cell libraries.
 Each standard cell (e.g., inverter, buffer) goes through electrical characterization to generate timing, power, and noise models used in Static Timing Analysis (STA).
 
-### 🔗 Inputs:
+### Inputs:
 
 - PDKs (Sky130A)
 - DRC/LVS rules
@@ -519,7 +556,7 @@ Each standard cell (e.g., inverter, buffer) goes through electrical characteriza
 - Design specs
 - Library LEF and LIB files
 
-### 🔁 Steps:
+### Steps:
 
 1. Load device models (PMOS/NMOS)
 2. Parse extracted SPICE netlist
@@ -530,31 +567,42 @@ Each standard cell (e.g., inverter, buffer) goes through electrical characteriza
 7. Run simulations using `.tran`, `.dc`, etc.
 8. Feed configuration into **GUNA** for LIB generation
 
-### 📤 Outputs:
+### Outputs:
 
 - `GDSII` (Layout)
 - `LEF` (Abstract)
 - `.LIB` (Timing and power)
 - `CDL` (Netlist)
 - SPICE extracted netlist
+  
+![Cell Design Flow](https://github.com/user-attachments/assets/bf655cc2-795e-46c6-9e45-608758800aca)
+![GUNA software](https://github.com/user-attachments/assets/d3bf02c0-8ec3-473c-81c3-94c993b3306f)
 
 ---
 
-## ⏱️ Timing Characterization in VLSI
+## Timing Characterization in VLSI
 
-Timing analysis models how quickly signals propagate through a gate, ensuring clock and data meet setup/hold constraints.
+Timing characterization is a fundamental process in VLSI design that involves measuring and modeling the temporal behavior of digital circuits, particularly standard cells. By analyzing how signals propagate through logic gates under various conditions, timing characterization enables accurate prediction of circuit performance, ensures timing closure, and helps avoid violations that could lead to chip failure. This process is essential for generating timing models, such as Liberty (.lib) files, which are used by synthesis, placement, and routing tools to verify that the design meets all timing constraints.
+
+During timing characterization, circuits are simulated across a range of process, voltage, and temperature (PVT) conditions to capture variations in timing behavior. The results quantify how quickly signals transition between logic states and how long it takes for a change at the input to affect the output. This data is critical for static timing analysis (STA), which checks that all signal paths in the design meet the required timing specifications.
 
 ### Key Parameters:
 
 | Parameter | Description |
 |----------|-------------|
-| **Propagation Delay** | Time from 50% input to 50% output |
-| **Slew Rate** | Time from 20% to 80% (rise/fall transitions) |
-| **Thresholds** | Defined voltage % levels for delay/slew (e.g., 20%, 50%, 80%) |
-| **Input/Output Rise/Fall** | Points used to evaluate rising/falling transitions |
+| **Timing Threshold** | These are predefined voltage levels, typically expressed as a percentage of the supply voltage (VDD), used to define when a signal is considered to have transitioned between logic states. |
+| **Propagation Delay** | The time for a signal change at a gate’s input to reach its output, measured between matching voltage thresholds (usually 50% of input to 50% of output) |
+| **Slew Rate (Transition Time)** | The slew rate, or transition time, refers to the time it takes for a signal to transition between two specified voltage thresholds, such as from 20% to 80% of VDD. This parameter indicates how quickly a signal rises or falls |
+| **Slew Low Rise Threshold (slew_low_rise_thr)** | This is the lower voltage threshold used to start measuring the rise transition time of a signal, typically set at 20% of VDD |
+| **Slew High Rise Threshold (slew_high_rise_thr)** | This is the upper voltage threshold used to end the measurement of the rise transition time, typically set at 80% of VDD |
+| **Slew Low Fall Threshold (slew_low_fall_thr)** | This is the lower voltage threshold used to start measuring the fall transition time of a signal, typically set at 20% of VDD |
+| **Slew High Fall Threshold (slew_high_fall_thr)** | This is the upper voltage threshold used to end the measurement of the fall transition time, typically set at 80% of VDD |
+| **Input Rise Threshold (in_rise_thr)** | This is the voltage threshold used to determine when a rising transition occurs at the input of a gate |
+| **Input Low Threshold (in_low_thr)** | This is the voltage threshold used to determine when a falling transition occurs at the input of a gate |
+| **Output Rise Threshold (out_rise_thr)** | This is the voltage threshold used to determine when a rising transition occurs at the output of a gate |
+| **Output Low Threshold (out_low_thr)** | This is the voltage threshold used to determine when a falling transition occurs at the output of a gate |
 
-![Timing Slew Diagram](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/timing_slew.png)
-
+![Timing Parameters](https://github.com/user-attachments/assets/60b4788b-4f85-4c90-bfac-88ee08026ec0)
 
 # Design library cell using Magic Layout and ngspice characterization
 
@@ -562,7 +610,7 @@ Timing analysis models how quickly signals propagate through a gate, ensuring cl
 
 This lab introduces the design, layout, and characterization of a custom CMOS inverter standard cell using open-source tools like Magic and ngspice. The goal is to understand the flow from layout design to simulation-based timing analysis.
 
-### Step 1: Clone Repository and Open Layout
+### Clone Repository and Open Layout
 
 Clone the standard cell design repo:
 ```bash
@@ -571,14 +619,12 @@ cd vsdstdcelldesign
 cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
 magic -T sky130A.tech sky130_inv.mag &
 ```
+Screenshot of above commands in terminal.
+![vsdstccell clone command](https://github.com/user-attachments/assets/677ae83b-b408-4bf7-b6f8-541659828a84)
+<br/>Layout of custom CMOS inverter in Magic.
+![inverter in magic](https://github.com/user-attachments/assets/9758a608-fc70-4343-a969-857d818b43ad)
 
-![Terminal Commands](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/inv_git_clone.png)
-
-### Step 2: Layout in Magic
-
-![Layout in Magic](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/magic_inv.png)
-
-### Step 3: SPICE Extraction and Simulation
+### SPICE Extraction and Simulation
 
 Extract SPICE netlist with parasitic components:
 ```bash
@@ -588,33 +634,54 @@ ext2spice cthresh 0 rthresh 0
 ext2spice
 ```
 
-![SPICE Extraction](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/tkcon_extract.png)
+![ext2spice](https://github.com/user-attachments/assets/c2472429-ab6b-4700-aa25-85145104900e)
+
 
 Modify the SPICE model file as per the `.lib` specifications.
 
-![Modified SPICE](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/inv_spice.png)
+![modified spice file](https://github.com/user-attachments/assets/7becc1ed-1e1e-4f25-9890-e9a8b8a1b5ae)
+
 
 Run simulation:
 ```bash
 ngspice sky130_inv.spice
 ```
 
-![SPICE Simulation](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/spice_run.png)
+![running of ngspice](https://github.com/user-attachments/assets/8ee247da-f8af-4f9e-b9dd-78eea12b28e9)
+
 
 Plot waveform:
 ```bash
 plot y vs time a
 ```
 
-![Waveform](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/y_vs_a_plot.png)
+![inverter in ngpsice](https://github.com/user-attachments/assets/b1e1e1a8-905f-4625-b3e8-bda5a2960de2)
+
 ![Timing Characteristics](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/time_n_delay.png)
 
-### Step 4: Timing Parameter Extraction
+<br/><br/>From this plot we can calculate various parameters related to timings and delays of the CMOS inverter characteristics.<br/><br/>
+Characterizing the parameters:<br/><br/>
+Rise Time: The time taken for the output waveform to transition from 20% to 80% of its maximum value.<br/>
+Using data points:<br/>
+x0 = 2.18257e-09, y0 = 0.66<br/>
+x1 = 2.24684e-09, y1 = 2.64<br/>
+Rise time = x1 - x0 = 0.06427 ns<br/><br/>
+Fall Time: The time taken for the output waveform to transition from 80% to 20% of its maximum value.<br/>
+Using data points:<br/>
+x0 = 4.07995e-09, y0 = 2.64<br/>
+x1 = 4.09524e-09, y1 = 0.66<br/>
+Fall time = x1 - x0 = 0.01529 ns<br/><br/>
+Propagation Delay: The time taken for a 50% transition at the output(low to high) corresponding to a 50% transition at the input(high to low).<br/>
+Using data points:<br/>
+x0 = 2.21153e-09, y0 = 1.65018<br/>
+x1 = 2.14988e-09, y1 = 1.65018<br/>
+Propagation delay = x1 - x0 = 0.06165 ns<br/><br/>
+Cell Fall Delay: The time taken for a 50% transition at the output(high to low) corresponding to a 50% transition at the input(low to high).<br/>
+Using data points:<br/>
+x0 = 4.078e-09, y0 = 1.65007<br/>
+x1 = 4.05e-09, y1 = 1.65007<br/>
+Cell fall delay = x1 - x0 = 0.028 ns<br/>
 
-- **Rise Time**: 0.06427 ns
-- **Fall Time**: 0.01529 ns
-- **Propagation Delay**: 0.06165 ns
-- **Cell Fall Delay**: 0.028 ns
 
 ## Fixing DRC Errors in Layout
 
@@ -667,8 +734,8 @@ magic -d XR &
 
 Screenshots of commands run
 
-![Screenshot from 2024-03-21 22-33-57](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/1b4cf68e-fa83-4d44-9b08-ca2b63ceb471)
-![Screenshot from 2024-03-21 22-34-09](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/1bc14ddb-feb6-4052-bc12-0f018f09c343)
+![Screenshot from 2025-06-17 19-37-09](https://github.com/user-attachments/assets/b48f44b9-3db7-4a01-935b-9508480cbe1f)
+
 
 Screenshot of .magicrc file
 
@@ -775,23 +842,44 @@ Screenshot of magic window with rule implemented
 ![Screenshot from 2024-03-22 01-10-25](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/49b1004d-f860-4ca7-86f4-4d79784a01cf)
 
 
-## Pre-layout Timing and Delay Table Introduction
+## Pre-layout Timing Analysis and Importance of a good Clock Tree
+Introduction to Delay Tables:<br/>
+Delay tables in VLSI are structured data sets within timing libraries (such as Liberty files) that specify the delay of logic cells as a function of one or more variables, most commonly input transition time (slew) and output load capacitance. These tables are typically generated through extensive circuit simulation (such as SPICE) across a range of realistic operating conditions, capturing the nonlinear relationship between input signal transitions, output loading, and gate delay.
 
-- Delay tables model gate and interconnect delays.
-- Used during static timing analysis (STA).
-- Delay representations include `.lib`, SPEF, RSPF.
+<br/>Purpose of Delay Tables:<br/>
+The primary purpose of delay tables is to provide accurate and efficient delay calculations for each cell in the design database during the physical design flow. Instead of performing complex transistor-level simulations for every cell during synthesis, placement, or routing, EDA tools use these pre-characterized delay tables to quickly estimate timing for millions of instances. This approach is essential for enabling practical static timing analysis (STA), where the tool sums up delays along timing paths using values interpolated from the tables.
+
+<br/>During physical design, delay tables serve multiple functions:<br/>
+The importance of delay tables in physical design cannot be overstated. They allow designers to achieve timing closure by ensuring that timing predictions are both accurate and fast, supporting optimization for performance, power, and area. By modeling the real-world behavior of cells under varying load and slew conditions, delay tables enable robust analysis across process, voltage, and temperature corners, which is critical for reliable chip manufacturing and operation.
+
+<br/>Types of Delay Representation:<br/>
+- Library Characterization Data (Lib Files) – These include lookup tables (LUTs) that provide delays based on input slew and output capacitance.
+- Parasitic Delay Models (SPEF, RSPF) – Account for wire delays and coupling effects.
+- Propagation Delay Tables – Define delays for individual gates under different operating conditions
 
 ## DAY-4 LAB
+
+Commands to open the custom inverter layout.<br/>
+Change directory to vsdstdcelldesign: ```cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign```
+<br/>Command to open custom inverter layout in magic: ```magic -T sky130A.tech sky130_inv.mag &```
+<br/>Screenshot of tracks.info of sky130_fd_sc_hd:<br/><br/>
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/tracks_info.png)
 
 Set grid for standard cell routing:
 ```bash
 grid 0.46um 0.34um 0.23um 0.17um
 ```
+![Screenshot from 2025-06-18 21-18-56](https://github.com/user-attachments/assets/52c34787-629e-4481-b899-033d841b9f87)
 
+<br/>Once the three conditions are verified, i.e.,
+<br/>Condition 1: The input and output ports of the standard cell should lie on the intersection of the vertical and horizontal tracks.
+<br/>Condition 2: Width of the standard cell should be odd multiples of the horizontal track pitch.
+<br/>Condition 3: Height of the standard cell should be even multiples of the vertical track pitch.
 Verify port alignment and dimensions, then save:
 ```bash
 save sky130_vsdinv.mag
 ```
+![Screenshot from 2025-06-19 00-29-03 - 1](https://github.com/user-attachments/assets/985decb0-9bbc-4e8d-a2fa-8eb378190803)
 
 Generate and copy LEF file:
 ```bash
@@ -799,6 +887,8 @@ lef write
 cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
 cp libs/sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
 ```
+![Screenshot from 2025-06-19 00-30-02](https://github.com/user-attachments/assets/09955dfc-e352-4091-9c95-36aaa6322324)
+![Screenshot from 2025-06-19 00-32-22](https://github.com/user-attachments/assets/cb8ed453-4ae0-45f3-b936-ea158b5933cd)
 
 Update `config.tcl`:
 ```tcl
@@ -808,6 +898,7 @@ set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc
 set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
 set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
 ```
+![Screenshot from 2025-06-19 00-40-15](https://github.com/user-attachments/assets/a550573d-500a-42e5-a4d4-a98243682c36)
 
 Run synthesis:
 ```bash
@@ -816,6 +907,9 @@ set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
 add_lefs -src $lefs
 run_synthesis
 ```
+![Screenshot from 2025-06-19 00-46-14](https://github.com/user-attachments/assets/b76d08b8-33df-4c81-b39a-b183fca1552d)
+![synthesis command run](https://github.com/user-attachments/assets/3fca224a-dd1c-46d9-b256-b0b529975c30)
+
 
 Update strategy and sizing:
 ```tcl
@@ -838,14 +932,23 @@ run_placement
 cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-01_17-10/results/placement/
 magic -T /path/to/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
 ```
+![placement command run](https://github.com/user-attachments/assets/44c8452a-ab3f-4215-9e15-444c348fcc08)
+![Screenshot from 2025-06-19 01-38-29](https://github.com/user-attachments/assets/ccae1489-2884-4d9f-85b4-79d2c46927b0)
+![Screenshot from 2025-06-19 01-43-08](https://github.com/user-attachments/assets/4dec58d4-9839-4c94-b791-fbd60d8c5c9a)
+![Screenshot from 2025-06-19 01-43-23](https://github.com/user-attachments/assets/5d057b6f-152d-477e-8ecc-4e617d56e7a4)
+![Screenshot from 2025-06-19 01-44-23](https://github.com/user-attachments/assets/d6fcbb3d-b1fd-485f-bea4-ab5d9ea828d4)
+![Screenshot from 2025-06-19 01-45-21](https://github.com/user-attachments/assets/6773cdde-1ae1-4802-970e-7a1c6d5e2e8e)
 
 ## Post-Synthesis Timing Analysis with OpenSTA
 
 Configure files:
 - `pre_sta.conf` in OpenLANE directory
 - `my_base.sdc` in `picorv32a/src`
+![Screenshot from 2025-06-19 03-35-24](https://github.com/user-attachments/assets/8dcc1b75-ec2d-4459-b223-97f8b22428a8)
+![Screenshot from 2025-06-19 03-48-33](https://github.com/user-attachments/assets/92f52e93-e44a-4505-9c82-c55288ce42f1)
 
 Extract capacitance from `.lib` and run OpenSTA.
+![Screenshot from 2025-06-19 12-19-22](https://github.com/user-attachments/assets/e6ee04cd-aef4-46e3-bd6c-6a06493e4fb2)
 To run the Static Timing Analysis(STA) in other terminal:<br/>
 ```
 \# Change directory to openlane
@@ -854,8 +957,9 @@ cd Desktop/work/tools/openlane_working_dir/openlane
 \# Command to invoke OpenSTA tool with script
 sta pre_sta.conf
 ```
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/sta1.png)
-We get a wns and slack violated value of -36.62 and tns value of -3854.15, which is very high.<br/><br/>
+
+![Screenshot from 2025-06-19 03-50-17](https://github.com/user-attachments/assets/bcd648fb-64d4-45f7-b3b3-d649daefa2bf)
+We get a wns and slack violated value of -0.33 and tns value of -0.72, here we can see that the slack is violated.<br/><br/>
 Now, running the synthesis for minimized slack violation:<br/>
 ```
 # prep design so as to update variables
@@ -889,21 +993,22 @@ echo $::env(SYNTH_MAX_FANOUT) 4
 # Now that the design is prepped and ready, we can run synthesis
 run_synthesis
 ```
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/re_synth.png)
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/syn_results.png)
+![Screenshot from 2025-06-19 12-22-31](https://github.com/user-attachments/assets/85fccc1b-648f-48c4-8f6a-8a7065430e9c)
+![Screenshot from 2025-06-19 12-44-19](https://github.com/user-attachments/assets/8458e0d1-78b2-4941-8b0b-062b854034e0)
+![Screenshot from 2025-06-19 12-50-06](https://github.com/user-attachments/assets/6191accf-0d72-42b6-bde9-72a97433abd8)
+
 <br/>Now the tns and wns value is minimized to 0.00
 <br/>Again running STA to reduce slack violations by manually reducing delays:
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/sta_2.png)
-<br/><br/>Here we got the max delay as 0.81 (of '_02560_' net)
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/max_delay_net.png)
+![Screenshot from 2025-06-19 12-49-24](https://github.com/user-attachments/assets/9aae3c64-17c6-41a3-a0b5-7c629798a254)
+<br/><br/>Here we got the max delay as 0.23 (of '_16171_' net)
+![Screenshot from 2025-06-19 12-58-21](https://github.com/user-attachments/assets/f1dc4295-9791-4ead-8c76-ab29f1c557db)
 <br/><br/>To reduce this delay we have to replace the cell under driver pins of desired net:
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/config_delays_sta.png)
+![Screenshot from 2025-06-19 13-01-18](https://github.com/user-attachments/assets/90614d1e-d225-4741-9084-e556cfe5eaca)
 <br/><br/>Again running the STA and checking wether the maximum delay and slack is reduced:
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/sta_3.png)
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/max_delay_reduced.png)
+![Screenshot from 2025-06-19 13-11-12](https://github.com/user-attachments/assets/ffdfc9b1-bd62-45cd-ab0b-2e09c19031cc)
 <br/><br/>As we can clearly see, the delay and slack is reduced by a significant factor.
-<br/>To do basic timing ECO: ```report_checks -from _35312_ -to _35239_ -through _32503_```
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/timing_ECO.png)
+<br/>To do basic timing ECO: ```report_checks -from _32396_ -to _32288_```
+![Screenshot from 2025-06-19 13-01-18](https://github.com/user-attachments/assets/94267703-d874-487e-b5c5-a8215cebe0c6)
 <br/>Now run floorplan```run_floorplan```, placement```run_placement``` and cts(clock tree synthesis) ```run_cts```.
 <br/><br/>Let's check some parameters like clock buffer list, root buffer, capacitance, etc based on the cts.tcl file:
 <br/><br/>Screenshot of cts.tcl file:
@@ -954,12 +1059,13 @@ report_checks -path_delay min_max -fields {slew trans net cap input_pins} -forma
 # Exit to OpenLANE flow
 exit
 ```
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/openroad_cmds.png)
+![Screenshot from 2025-06-19 18-49-10](https://github.com/user-attachments/assets/2350842e-9cdb-4198-81e6-2cb2ad3a0331)
+
 <br/><br/>This will generate a hold and a setup report:
 <br/>Screenshot of Hold report:
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/hold_report.png)
+![Screenshot from 2025-06-19 18-49-26](https://github.com/user-attachments/assets/a2d69bcd-8405-46c7-9703-da1c28d9db9e)
 <br/><br/>Screenshuot of Setup report
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/setup_report.png)
+![Screenshot from 2025-06-19 18-49-30](https://github.com/user-attachments/assets/fa8ba9af-d347-49f9-811b-4db6ff1893d3)
 <br/><br/>Inboth the cases the timing slack is 'MET' and not violated.
 <br/>But we can improve the slack even more, even though it has negative effect like increase in area. We can reduce the slack by removing the 'clkbuf_1' from the buffer list.
 ```
@@ -984,8 +1090,6 @@ run_cts
 # Checking current value of \'CTS_CLK_BUFFER_LIST\'
 echo \$::env(CTS_CLK_BUFFER_LIST)
 ```
-<br/><br/>Screenshot of code implementation:
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/run_new_cts.png)
 ```
 # Command to run OpenROAD tool
 openroad
@@ -1029,15 +1133,6 @@ report_clock_skew -setup
 # Exit to OpenLANE flow
 exit
 ```
-<br/><br/>Screenshot of code implementation:
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/new_openroad.png)
-
-<br/><br/>New setup and hold reports:
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/new_hold.png)
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/new_setup.png)
-
-<br/><br/>It can be clearly noted that the setup has improved by 5.9ps and the hold has improved by 738.2ps which is quite significant.
-
 <br/><br/>We can reinsert the clkbuf_1 into the buffer list after the openroad implementation:
 ```
 # Checking current value of \'CTS_CLK_BUFFER_LIST\'
@@ -1050,8 +1145,6 @@ sky130_fd_sc_hd\_\_clkbuf_1\]
 # Checking current value of \'CTS_CLK_BUFFER_LIST\'
 echo \$::env(CTS_CLK_BUFFER_LIST)
 ```
-<br/><br/>Screenshot of code implementation:
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/reinsert_clk_buf_1.png)
 
 # Final steps for RTL2GDS using tritonRoute and openSTA
 # DAY-5 LAB
@@ -1079,15 +1172,11 @@ echo  $::env(CURRENT_DEF)
 # Now that CTS is done we can do power distribution network
 gen_pdn
 ```
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/pdn_docker.png)
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/pdn_info.png)
+![Screenshot from 2025-06-19 18-13-44](https://github.com/user-attachments/assets/e1eadb72-35fc-44e6-94ae-5807aaf933ac)
+![Screenshot from 2025-06-19 18-13-48](https://github.com/user-attachments/assets/bb438636-b17c-4ecf-9d27-c15a75b4c6dd)
+
 <br/><br/>After running pdn, if we check CURRENT_DEF: ```echo  $::env(CURRENT_DEF)```, it is now changed from 'picorv32a.cts.def' to '17-pdn.def'<br/><br/>
 ![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/pdn_end_def.png)
-
-Screenshots of power distribution network run
-
-![Screenshot from 2024-03-26 14-22-34](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/dd916806-6688-4c96-b1af-156b2d4acfe6)
-![Screenshot from 2024-03-26 14-22-46](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/1f6ade75-93c2-4b76-bc46-77d1d532a84c)
 
 Commands to load PDN def in magic in another terminal
 
@@ -1100,10 +1189,9 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ```
 
 Screenshots of PDN def
-
-![Screenshot from 2024-03-26 14-30-52](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/b13997fd-296c-4213-b4f9-8f66a7375e47)
-![Screenshot from 2024-03-26 14-32-24](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/79b5f158-acf4-4065-a0ec-61007ab465d0)
-![Screenshot from 2024-03-26 14-34-03](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/bee921ce-03d5-49fb-a9fc-bcc6e3402f8c)
+![Screenshot from 2025-06-19 18-19-51](https://github.com/user-attachments/assets/eb7626fc-0b5b-408c-8cb4-ddf61fd10e8e)
+![Screenshot from 2025-06-19 18-20-24](https://github.com/user-attachments/assets/ce64bb8c-df3a-41f8-ad8f-894e6309a4ec)
+![Screenshot from 2025-06-19 18-20-33](https://github.com/user-attachments/assets/0b9b94db-fde0-46f0-85e6-df38497de47f)
 
 #### 2. Perfrom detailed routing using TritonRoute and explore the routed layout.
 
@@ -1121,10 +1209,9 @@ run_routing
 ```
 
 Screenshots of routing run
-
-![Screenshot from 2024-03-26 14-48-29](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/f166be26-f49a-4001-abee-ce395857990f)
-![Screenshot from 2024-03-26 15-38-39](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/c0c8f372-0293-4fdd-a0a3-691f164e7bed)
-![Screenshot from 2024-03-26 15-29-38](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/70a99289-06ea-4eb8-b3b0-4147395c6f9c)
+![Screenshot from 2025-06-19 18-25-26](https://github.com/user-attachments/assets/e37015e1-375d-4029-a8c8-9d8b8156e80d)
+![Screenshot from 2025-06-19 18-25-31](https://github.com/user-attachments/assets/32d75a2d-0b63-4385-b8dc-f4450fe40009)
+![Screenshot from 2025-06-19 18-25-46](https://github.com/user-attachments/assets/6a055576-b584-453c-b0a6-574433fd3577)
 
 Commands to load routed def in magic in another terminal
 
@@ -1138,10 +1225,9 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 Screenshots of routed def
 
-![Screenshot from 2024-03-26 15-33-12](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/6eade230-eb96-4d7b-b7a9-7a7db9c2c8b7)
-![Screenshot from 2024-03-26 15-30-36](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/b1900c55-7470-41b2-8b4f-3af871494d99)
-![Screenshot from 2024-03-26 15-31-29](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/5faaca5b-fb6e-4abd-946d-6531b35489b8)
-![Screenshot from 2024-03-26 15-32-20](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/594ef79b-4755-4934-a087-33fb24996526)
+![Screenshot from 2025-06-19 19-29-29](https://github.com/user-attachments/assets/9391d902-282f-4c4b-afc0-1177450a31fd)
+![Screenshot from 2025-06-19 19-29-59](https://github.com/user-attachments/assets/bb46729a-d5ef-40c9-8b8d-b8c824e340ed)
+![Screenshot from 2025-06-19 19-30-05](https://github.com/user-attachments/assets/c0cd0700-1913-4f27-a3bc-1e15922b966e)
 
 Screenshot of fast route guide present in `openlane/designs/picorv32a/runs/26-03_08-45/tmp/routing` directory
 
@@ -1193,11 +1279,14 @@ exit
 ```
 
 Screenshots of commands run and timing report generated
-
-![Screenshot from 2024-03-26 23-16-16](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/72ef3e8d-7ca2-4b60-89ea-de053f9c2902)
-![Screenshot from 2024-03-26 23-17-09](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/5cac9ce5-420a-4eaa-b5f4-09286701e550)
-![Screenshot from 2024-03-26 23-17-32](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/7d809f14-66b6-4dd6-8161-2ad8371cfaf9)
-![Screenshot from 2024-03-26 23-17-56](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/64ccb1d8-74aa-42b0-88d4-a0f9588d2ca2)
+![Screenshot from 2025-06-19 18-44-51](https://github.com/user-attachments/assets/3acac10f-9f4c-430f-916e-0e0c1bb5037c)
+![Screenshot from 2025-06-19 18-49-10](https://github.com/user-attachments/assets/c716d74e-325c-4782-b03f-a27505fb39a7)
+![Screenshot from 2025-06-19 18-49-22](https://github.com/user-attachments/assets/9f7d8f0a-afde-440c-8cd6-18196030dc13)
+![Screenshot from 2025-06-19 18-49-24](https://github.com/user-attachments/assets/932265c3-69bb-48f2-9615-b7c45a1e1a9c)
+![Screenshot from 2025-06-19 18-49-26](https://github.com/user-attachments/assets/f6566696-13a5-4abc-b5d7-7d2452ca4286)
+![Screenshot from 2025-06-19 18-49-28](https://github.com/user-attachments/assets/db5666e6-918d-4cd8-bcde-208ecf39a355)
+![Screenshot from 2025-06-19 18-49-29](https://github.com/user-attachments/assets/e531a044-f8c1-45ca-aa1f-fe1e422921b9)
+![Screenshot from 2025-06-19 18-49-30](https://github.com/user-attachments/assets/f17b428e-0fb5-493d-8422-9b9d9c526e0c)
 
 <br/><br/>
 # Acknowledgements
