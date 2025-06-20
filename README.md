@@ -1,6 +1,3 @@
-# Digital-VLSI-SoC-Design-and-Planning-NASSCOM-VSD
-2-week intensive workshop on Digital VLSI SoC Design and Planning, covering the complete RTL-to-GDSII flow, organized by VLSI System Design (VSD) in collaboration with NASSCOM. The program focused on Advanced Physical Design using OpenLANE and the Sky130 PDK.
-
 # Digital VLSI SoC Design and Planning
 ![Static Badge](https://img.shields.io/badge/OS-linux-orange)
 ![Static Badge](https://img.shields.io/badge/EDA%20Tools-OpenLANE--Flow%2C_Yosys%2C_abc%2C_OpenROAD%2C_TritonRoute%2C_OpenSTA%2C_magic%2C_netgen%2C_GUNA-navy)
@@ -23,9 +20,11 @@ In this session, we will delve into the end-to-end process of designing an Appli
 - Pre-Layout Timing Analysis and Importance of Good Clock Tree <br/>
 - Final Steps for RTL2GDS
 
-# 🧩 Advanced Breakdown: QFN-48 Packaging, Silicon Die Architecture, IP Integration & RISC-V Based ASIC Design
+# Inception of open-source EDA, OpenLANE and Sky130 PDK
 
-## 📦 QFN-48 Package Architecture
+## 🧩 Advanced Breakdown: QFN-48 Packaging, Silicon Die Architecture, IP Integration & RISC-V Based ASIC Design
+
+### 📦 QFN-48 Package Architecture
 
 The **QFN-48 (Quad Flat No-Lead, 48-pin)** is a thermally-enhanced, leadframe-based surface-mount package widely adopted for low-profile, high-performance ICs. It provides:
 - **48 edge-terminal contact pads** for signal I/O and power delivery.
@@ -39,7 +38,7 @@ The **QFN-48 (Quad Flat No-Lead, 48-pin)** is a thermally-enhanced, leadframe-ba
 
 ---
 
-## 🧠 Silicon Die Anatomy: Core, Pads, Macros & IPs
+### 🧠 Silicon Die Anatomy: Core, Pads, Macros & IPs
 
 ### 🔹 **Core**
 The **core area** is the functional heart of the ASIC where RTL logic is realized as standard cell instances. It includes:
@@ -77,7 +76,7 @@ Surrounding the core, the **pad ring** includes:
 
 ---
 
-## 🧮 Instruction Set Architecture: RISC-V
+### 🧮 Instruction Set Architecture: RISC-V
 
 **RISC-V** is a modular, extensible, open-source **ISA (Instruction Set Architecture)**. Unlike proprietary ISAs (e.g., ARM, x86), RISC-V enables silicon designers to:
 - Add **custom extensions** (e.g., DSP, Crypto).
@@ -95,7 +94,7 @@ ISA levels:
 
 ---
 
-## ⚙️ Software-to-Hardware Translation Pipeline
+### ⚙️ Software-to-Hardware Translation Pipeline
 
 The path from high-level software to binary-executable hardware involves several abstraction layers:
 
@@ -116,7 +115,7 @@ At execution, binary instructions interact with:
 
 ---
 
-## 🏗️ RTL2GDSII: ASIC Physical Design Flow
+### 🏗️ RTL2GDSII: ASIC Physical Design Flow
 
 ![ASIC Flow](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/asicflow.png)
 
@@ -187,15 +186,6 @@ Includes:
 - Enable community-driven, open-source SoC tapeouts and silicon prototyping
 
 ---
-
-> 🚀 This project provides hands-on exposure to modern VLSI design flows, enabling RTL-to-GDSII implementation of custom RISC-V-based ASICs using an entirely open-source stack.
-
-# 🔧 Open-Source ASIC Design using OpenLANE and Sky130 PDK  
-**Project: RTL2GDSII Flow for picorv32a (RISC-V Core)**  
-🧪 *A comprehensive VLSI digital backend flow implementation using open-source tools*
-
----
-
 ## 📌 Introduction
 
 This project walks through the full Application-Specific Integrated Circuit (ASIC) digital backend design flow using the **OpenLANE EDA toolchain** and **Sky130 PDK**. The RTL design under consideration is **picorv32a**, a minimalistic and highly configurable RISC-V core.
@@ -444,7 +434,7 @@ Floorplanning defines the die/core dimensions, IO locations, cell rows, and powe
 ```
 run_floorplan
 ```
-
+![image.png](attachment:c9f0a694-2f6a-47a1-a46b-eff82b166481:image.png)
 ![Running Floorplan](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/fp_run.png)
 
 The `results/floorplan/` directory contains the output `.def` file, which encodes key geometric and placement information such as die area, core rows, pin locations, and macro outlines.
@@ -646,6 +636,143 @@ tech load sky130A.tech
 drc check
 drc why
 ```
+#### 6. Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
+
+Link to Sky130 Periphery rules: [https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html)
+
+Commands to download and view the corrupted skywater process magic tech file and associated files to perform drc corrections
+
+```bash
+# Change to home directory
+cd
+
+# Command to download the lab files
+wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+
+# Since lab file is compressed command to extract it
+tar xfz drc_tests.tgz
+
+# Change directory into the lab folder
+cd drc_tests
+
+# List all files and directories present in the current directory
+ls -al
+
+# Command to view .magicrc file
+gvim .magicrc
+
+# Command to open magic tool in better graphics
+magic -d XR &
+```
+
+Screenshots of commands run
+
+![Screenshot from 2024-03-21 22-33-57](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/1b4cf68e-fa83-4d44-9b08-ca2b63ceb471)
+![Screenshot from 2024-03-21 22-34-09](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/1bc14ddb-feb6-4052-bc12-0f018f09c343)
+
+Screenshot of .magicrc file
+
+![Screenshot from 2024-03-21 22-35-58](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/89b46a0f-63b7-445c-bf2b-e6cda16853c7)
+
+**Incorrectly implemented poly.9 simple rule correction**
+
+Screenshot of poly rules
+
+![Screenshot from 2024-03-21 22-54-49](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/9260cf37-5933-44a1-8362-597183644334)
+
+Incorrectly implemented poly.9 rule no drc violation even though spacing < 0.48u
+
+![Screenshot from 2024-03-21 22-54-19](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/acfbcf69-020e-4b62-96bd-b7630aa74ef0)
+![Screenshot from 2024-03-21 23-54-11](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/a05bd29a-b181-4e26-826a-d32f12696b2c)
+
+New commands inserted in sky130A.tech file to update drc
+
+![Screenshot from 2024-03-21 23-58-44](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/dc30df54-3282-42f0-8e7d-fc4d8877ed64)
+![Screenshot from 2024-03-21 23-09-50](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/d112ca07-854c-41e7-8822-c269e21defea)
+
+Commands to run in tkcon window
+
+```tcl
+# Loading updated tech file
+tech load sky130A.tech
+
+# Must re-run drc check to see updated drc errors
+drc check
+
+# Selecting region displaying the new errors and getting the error messages 
+drc why
+```
+
+Screenshot of magic window with rule implemented
+
+![Screenshot from 2024-03-21 23-13-11](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/b18e8e07-ef0f-40fb-9b6d-8aae878a23c6)
+![Screenshot from 2024-03-22 00-00-40](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/d5afe8d8-691b-485d-a89a-8f901e18b56e)
+
+**Incorrectly implemented difftap.2 simple rule correction**
+
+Screenshot of difftap rules
+
+![Screenshot from 2024-03-22 00-14-47](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/086b7a66-b60a-470a-b5c0-a5ac938ebec3)
+
+Incorrectly implemented difftap.2 rule no drc violation even though spacing < 0.42u
+
+![Screenshot from 2024-03-22 00-14-36](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/a2d0d739-2df5-4eb5-ab78-c80d366e24e4)
+
+New commands inserted in sky130A.tech file to update drc
+
+![Screenshot from 2024-03-22 00-26-43](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/b5892f9b-9c5d-4b1b-baa2-6fe45f3965b1)
+
+Commands to run in tkcon window
+
+```tcl
+# Loading updated tech file
+tech load sky130A.tech
+
+# Must re-run drc check to see updated drc errors
+drc check
+
+# Selecting region displaying the new errors and getting the error messages 
+drc why
+```
+
+Screenshot of magic window with rule implemented
+
+![Screenshot from 2024-03-22 00-29-22](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/a3f92160-6701-48fb-b6cf-e4c41dc4a531)
+
+**Incorrectly implemented nwell.4 complex rule correction**
+
+Screenshot of nwell rules
+
+![Screenshot from 2024-03-22 00-51-34](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/4ad4901d-0b9a-4339-89e3-7bb3fce2766d)
+
+Incorrectly implemented nwell.4 rule no drc violation even though no tap present in nwell
+
+![Screenshot from 2024-03-22 00-52-51](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/87da8944-0ad8-455d-97ec-3909eac656c3)
+
+New commands inserted in sky130A.tech file to update drc
+
+![Screenshot from 2024-03-22 01-03-42](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/886c6930-6314-4a6f-97d9-6b8423444ac0)
+![Screenshot from 2024-03-22 01-04-04](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/d9808e9a-42c2-4421-9b82-2ef65a5a1ad7)
+
+Commands to run in tkcon window
+
+```tcl
+# Loading updated tech file
+tech load sky130A.tech
+
+# Change drc style to drc full
+drc style drc(full)
+
+# Must re-run drc check to see updated drc errors
+drc check
+
+# Selecting region displaying the new errors and getting the error messages 
+drc why
+```
+
+Screenshot of magic window with rule implemented
+
+![Screenshot from 2024-03-22 01-10-25](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/49b1004d-f860-4ca7-86f4-4d79784a01cf)
 
 
 ## Pre-layout Timing and Delay Table Introduction
@@ -719,4 +846,361 @@ Configure files:
 - `my_base.sdc` in `picorv32a/src`
 
 Extract capacitance from `.lib` and run OpenSTA.
+To run the Static Timing Analysis(STA) in other terminal:<br/>
+```
+\# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
 
+\# Command to invoke OpenSTA tool with script
+sta pre_sta.conf
+```
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/sta1.png)
+We get a wns and slack violated value of -36.62 and tns value of -3854.15, which is very high.<br/><br/>
+Now, running the synthesis for minimized slack violation:<br/>
+```
+# prep design so as to update variables
+prep -design picorv32a -tag 24-03_10-03 -overwrite
+
+# Additional commands to include newly added lef to openlane flow merged.lef
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+# Command to display current value of variable SYNTH_STRATEGY
+echo $::env(SYNTH_STRATEGY)
+
+# Command to set new value for SYNTH_STRATEGY
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+# Command to display current value of variable SYNTH_BUFFERING
+echo $::env(SYNTH_BUFFERING)
+
+# Command to display current value of variable SYNTH_SIZING
+echo $::env(SYNTH_SIZING)
+
+# Command to set new value for SYNTH_SIZING
+set ::env(SYNTH_SIZING) 1
+
+# Command to display current value of variable SYNTH_DRIVING_CELL to check whether it's the proper cell or not
+echo $::env(SYNTH_DRIVING_CELL)
+
+# Command to set reduce MAX_FANOUT to 4
+echo $::env(SYNTH_MAX_FANOUT) 4
+
+# Now that the design is prepped and ready, we can run synthesis
+run_synthesis
+```
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/re_synth.png)
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/syn_results.png)
+<br/>Now the tns and wns value is minimized to 0.00
+<br/>Again running STA to reduce slack violations by manually reducing delays:
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/sta_2.png)
+<br/><br/>Here we got the max delay as 0.81 (of '_02560_' net)
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/max_delay_net.png)
+<br/><br/>To reduce this delay we have to replace the cell under driver pins of desired net:
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/config_delays_sta.png)
+<br/><br/>Again running the STA and checking wether the maximum delay and slack is reduced:
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/sta_3.png)
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/max_delay_reduced.png)
+<br/><br/>As we can clearly see, the delay and slack is reduced by a significant factor.
+<br/>To do basic timing ECO: ```report_checks -from _35312_ -to _35239_ -through _32503_```
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/timing_ECO.png)
+<br/>Now run floorplan```run_floorplan```, placement```run_placement``` and cts(clock tree synthesis) ```run_cts```.
+<br/><br/>Let's check some parameters like clock buffer list, root buffer, capacitance, etc based on the cts.tcl file:
+<br/><br/>Screenshot of cts.tcl file:
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/cts_tcl.png)
+<br/><br/>Screenshot of displaying parameters and invoking openROAD ```openroad```.
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/openroad.png)
+
+
+# Post-CTS OpenROAD timing analysis
+The commands required to succesfully implement OpenROAD:
+```
+# Command to run OpenROAD tool
+openroad
+
+# Reading lef file
+read_lef /openLANE_flow/designs/picorv32a/runs/31-01_17-10/tmp/merged.lef
+
+# Reading def file
+read_def /openLANE_flow/designs/picorv32a/runs/31-01_17-10/results/cts/picorv32a.cts.def
+
+# Creating an OpenROAD database to work with
+write_db pico_cts.db
+
+# Loading the created database in OpenROAD
+read_db pico_cts.db
+
+# Read netlist post CTS
+read_verilog /openLANE_flow/designs/picorv32a/runs/31-01_17-10/results/synthesis/picorv32a.synthesis_cts.v
+
+# Read library for design
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+# Link design and library
+link_design picorv32a
+
+# Read in the custom sdc we created
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+# Setting all clocks as propagated clocks
+set_propagated_clock \[all_clocks\]
+
+# Check syntax of \'report_checks\' command
+help report_checks
+
+# Generating custom timing report
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+# Exit to OpenLANE flow
+exit
+```
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/openroad_cmds.png)
+<br/><br/>This will generate a hold and a setup report:
+<br/>Screenshot of Hold report:
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/hold_report.png)
+<br/><br/>Screenshuot of Setup report
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/setup_report.png)
+<br/><br/>Inboth the cases the timing slack is 'MET' and not violated.
+<br/>But we can improve the slack even more, even though it has negative effect like increase in area. We can reduce the slack by removing the 'clkbuf_1' from the buffer list.
+```
+# Checking current value of \'CTS_CLK_BUFFER_LIST\'
+echo \$::env(CTS_CLK_BUFFER_LIST)
+
+# Removing \'sky130_fd_sc_hd\_\_clkbuf_1\' from the list
+set ::env(CTS_CLK_BUFFER_LIST) \[lreplace \$::env(CTS_CLK_BUFFER_LIST) 0 0\]
+
+# Checking current value of \'CTS_CLK_BUFFER_LIST\'
+echo \$::env(CTS_CLK_BUFFER_LIST)
+
+# Checking current value of \'CURRENT_DEF\'
+echo \$::env(CURRENT_DEF)
+
+# Setting def as placement def
+set ::env(CURRENT_DEF)/openLANE_flow/designs/picorv32a/runs/17-01_14-04/results/placement/picorv32a.placement.def
+
+# Run CTS again
+run_cts
+
+# Checking current value of \'CTS_CLK_BUFFER_LIST\'
+echo \$::env(CTS_CLK_BUFFER_LIST)
+```
+<br/><br/>Screenshot of code implementation:
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/run_new_cts.png)
+```
+# Command to run OpenROAD tool
+openroad
+
+# Reading lef file
+read_lef /openLANE_flow/designs/picorv32a/runs/17-01_14-04/tmp/merged.lef
+
+# Reading def file
+read_def /openLANE_flow/designs/picorv32a/runs/17-01_14-04/results/cts/picorv32a.cts.def
+
+# Creating an OpenROAD database to work with
+write_db pico_cts1.db
+
+# Loading the created database in OpenROAD
+read_db pico_cts.db
+
+# Read netlist post CTS
+read_verilog /openLANE_flow/designs/picorv32a/runs/17-01_14-04/results/synthesis/picorv32a.synthesis_cts.v
+
+# Read library for design
+read_liberty \$::env(LIB_SYNTH_COMPLETE)
+
+# Link design and library
+link_design picorv32a
+
+# Read in the custom sdc we created
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+# Setting all cloks as propagated clocks
+set_propagated_clock [all_clocks]
+
+# Generating custom timing report
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+# Report hold skew
+report_clock_skew -hold
+
+# Report setup skew
+report_clock_skew -setup
+
+# Exit to OpenLANE flow
+exit
+```
+<br/><br/>Screenshot of code implementation:
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/new_openroad.png)
+
+<br/><br/>New setup and hold reports:
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/new_hold.png)
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/new_setup.png)
+
+<br/><br/>It can be clearly noted that the setup has improved by 5.9ps and the hold has improved by 738.2ps which is quite significant.
+
+<br/><br/>We can reinsert the clkbuf_1 into the buffer list after the openroad implementation:
+```
+# Checking current value of \'CTS_CLK_BUFFER_LIST\'
+echo \$::env(CTS_CLK_BUFFER_LIST)
+
+# Inserting \'sky130_fd_sc_hd\_\_clkbuf_1\' to first index of list
+set ::env(CTS_CLK_BUFFER_LIST) \[linsert \$::env(CTS_CLK_BUFFER_LIST) 0
+sky130_fd_sc_hd\_\_clkbuf_1\]
+
+# Checking current value of \'CTS_CLK_BUFFER_LIST\'
+echo \$::env(CTS_CLK_BUFFER_LIST)
+```
+<br/><br/>Screenshot of code implementation:
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/reinsert_clk_buf_1.png)
+
+# Final steps for RTL2GDS using tritonRoute and openSTA
+# DAY-5 LAB
+Generation of Power Distribution Network(PDN) and exploring the layout in Magic:
+```
+# Change directory to openlane flow directory
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Since we have aliased the long command to \'docker\' we can invoke the OpenLANE flow docker sub-system by just running this command
+docker
+
+# Now that we have entered the OpenLANE flow contained docker sub-system we can invoke the OpenLANE flow in the Interactive mode using
+the following command
+./flow.tcl -interactive
+
+# Now that OpenLANE flow is open we have to input the required packages for proper functionality of the OpenLANE flow
+package require openlane 0.9
+
+# Now we have to prep the design  
+prep -design picorv32a -tag 31-01_17-10
+
+# Check current def
+echo  $::env(CURRENT_DEF)
+
+# Now that CTS is done we can do power distribution network
+gen_pdn
+```
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/pdn_docker.png)
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/pdn_info.png)
+<br/><br/>After running pdn, if we check CURRENT_DEF: ```echo  $::env(CURRENT_DEF)```, it is now changed from 'picorv32a.cts.def' to '17-pdn.def'<br/><br/>
+![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/pdn_end_def.png)
+
+Screenshots of power distribution network run
+
+![Screenshot from 2024-03-26 14-22-34](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/dd916806-6688-4c96-b1af-156b2d4acfe6)
+![Screenshot from 2024-03-26 14-22-46](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/1f6ade75-93c2-4b76-bc46-77d1d532a84c)
+
+Commands to load PDN def in magic in another terminal
+
+```bash
+# Change directory to path containing generated PDN def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/tmp/floorplan/
+
+# Command to load the PDN def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read 14-pdn.def &
+```
+
+Screenshots of PDN def
+
+![Screenshot from 2024-03-26 14-30-52](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/b13997fd-296c-4213-b4f9-8f66a7375e47)
+![Screenshot from 2024-03-26 14-32-24](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/79b5f158-acf4-4065-a0ec-61007ab465d0)
+![Screenshot from 2024-03-26 14-34-03](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/bee921ce-03d5-49fb-a9fc-bcc6e3402f8c)
+
+#### 2. Perfrom detailed routing using TritonRoute and explore the routed layout.
+
+Command to perform routing
+
+```tcl
+# Check value of 'CURRENT_DEF'
+echo $::env(CURRENT_DEF)
+
+# Check value of 'ROUTING_STRATEGY'
+echo $::env(ROUTING_STRATEGY)
+
+# Command for detailed route using TritonRoute
+run_routing
+```
+
+Screenshots of routing run
+
+![Screenshot from 2024-03-26 14-48-29](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/f166be26-f49a-4001-abee-ce395857990f)
+![Screenshot from 2024-03-26 15-38-39](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/c0c8f372-0293-4fdd-a0a3-691f164e7bed)
+![Screenshot from 2024-03-26 15-29-38](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/70a99289-06ea-4eb8-b3b0-4147395c6f9c)
+
+Commands to load routed def in magic in another terminal
+
+```bash
+# Change directory to path containing routed def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/results/routing/
+
+# Command to load the routed def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
+```
+
+Screenshots of routed def
+
+![Screenshot from 2024-03-26 15-33-12](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/6eade230-eb96-4d7b-b7a9-7a7db9c2c8b7)
+![Screenshot from 2024-03-26 15-30-36](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/b1900c55-7470-41b2-8b4f-3af871494d99)
+![Screenshot from 2024-03-26 15-31-29](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/5faaca5b-fb6e-4abd-946d-6531b35489b8)
+![Screenshot from 2024-03-26 15-32-20](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/594ef79b-4755-4934-a087-33fb24996526)
+
+Screenshot of fast route guide present in `openlane/designs/picorv32a/runs/26-03_08-45/tmp/routing` directory
+
+![Screenshot from 2024-03-26 15-41-18](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/1dc38a57-03c9-45c3-acdb-063731a86433)
+
+#### 4. Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
+
+Commands to be run in OpenLANE flow to do OpenROAD timing analysis with integrated OpenSTA in OpenROAD
+
+```tcl
+# Command to run OpenROAD tool
+openroad
+
+# Reading lef file
+read_lef /openLANE_flow/designs/picorv32a/runs/26-03_08-45/tmp/merged.lef
+
+# Reading def file
+read_def /openLANE_flow/designs/picorv32a/runs/26-03_08-45/results/routing/picorv32a.def
+
+# Creating an OpenROAD database to work with
+write_db pico_route.db
+
+# Loading the created database in OpenROAD
+read_db pico_route.db
+
+# Read netlist post CTS
+read_verilog /openLANE_flow/designs/picorv32a/runs/26-03_08-45/results/synthesis/picorv32a.synthesis_preroute.v
+
+# Read library for design
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+# Link design and library
+link_design picorv32a
+
+# Read in the custom sdc we created
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+# Setting all cloks as propagated clocks
+set_propagated_clock [all_clocks]
+
+# Read SPEF
+read_spef /openLANE_flow/designs/picorv32a/runs/26-03_08-45/results/routing/picorv32a.spef
+
+# Generating custom timing report
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+# Exit to OpenLANE flow
+exit
+```
+
+Screenshots of commands run and timing report generated
+
+![Screenshot from 2024-03-26 23-16-16](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/72ef3e8d-7ca2-4b60-89ea-de053f9c2902)
+![Screenshot from 2024-03-26 23-17-09](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/5cac9ce5-420a-4eaa-b5f4-09286701e550)
+![Screenshot from 2024-03-26 23-17-32](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/7d809f14-66b6-4dd6-8161-2ad8371cfaf9)
+![Screenshot from 2024-03-26 23-17-56](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/64ccb1d8-74aa-42b0-88d4-a0f9588d2ca2)
+
+<br/><br/>
+# Acknowledgements
+- Kunal Ghosh, Co-founder, VLSI System Design.<br/>
+- Nickson P Jose, Technical Lead, HCLTech.<br/>
+- R. Timothy Edwards, Senior Vice President of Analog and Design, Efabless Corporation.<br/>
