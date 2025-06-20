@@ -929,7 +929,7 @@ tap_decap_or
 Run placement and open layout in Magic:
 ```bash
 run_placement
-cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-01_17-10/results/placement/
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/19-06_08-08/results/placement/
 magic -T /path/to/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
 ```
 ![placement command run](https://github.com/user-attachments/assets/44c8452a-ab3f-4215-9e15-444c348fcc08)
@@ -963,7 +963,7 @@ We get a wns and slack violated value of -0.33 and tns value of -0.72, here we c
 Now, running the synthesis for minimized slack violation:<br/>
 ```
 # prep design so as to update variables
-prep -design picorv32a -tag 24-03_10-03 -overwrite
+prep -design picorv32a -tag 19-06_08-08 -overwrite
 
 # Additional commands to include newly added lef to openlane flow merged.lef
 set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
@@ -1024,10 +1024,10 @@ The commands required to succesfully implement OpenROAD:
 openroad
 
 # Reading lef file
-read_lef /openLANE_flow/designs/picorv32a/runs/31-01_17-10/tmp/merged.lef
+read_lef /openLANE_flow/designs/picorv32a/runs/19-06_08-08/tmp/merged.lef
 
 # Reading def file
-read_def /openLANE_flow/designs/picorv32a/runs/31-01_17-10/results/cts/picorv32a.cts.def
+read_def /openLANE_flow/designs/picorv32a/runs/19-06_08-08/results/cts/picorv32a.cts.def
 
 # Creating an OpenROAD database to work with
 write_db pico_cts.db
@@ -1036,7 +1036,7 @@ write_db pico_cts.db
 read_db pico_cts.db
 
 # Read netlist post CTS
-read_verilog /openLANE_flow/designs/picorv32a/runs/31-01_17-10/results/synthesis/picorv32a.synthesis_cts.v
+read_verilog /openLANE_flow/designs/picorv32a/runs/19-06_08-08/results/synthesis/picorv32a.synthesis_cts.v
 
 # Read library for design
 read_liberty $::env(LIB_SYNTH_COMPLETE)
@@ -1082,7 +1082,7 @@ echo \$::env(CTS_CLK_BUFFER_LIST)
 echo \$::env(CURRENT_DEF)
 
 # Setting def as placement def
-set ::env(CURRENT_DEF)/openLANE_flow/designs/picorv32a/runs/17-01_14-04/results/placement/picorv32a.placement.def
+set ::env(CURRENT_DEF)/openLANE_flow/designs/picorv32a/runs/19-06_08-08/results/placement/picorv32a.placement.def
 
 # Run CTS again
 run_cts
@@ -1095,10 +1095,10 @@ echo \$::env(CTS_CLK_BUFFER_LIST)
 openroad
 
 # Reading lef file
-read_lef /openLANE_flow/designs/picorv32a/runs/17-01_14-04/tmp/merged.lef
+read_lef /openLANE_flow/designs/picorv32a/runs/19-06_08-08/tmp/merged.lef
 
 # Reading def file
-read_def /openLANE_flow/designs/picorv32a/runs/17-01_14-04/results/cts/picorv32a.cts.def
+read_def /openLANE_flow/designs/picorv32a/runs/19-06_08-08/results/cts/picorv32a.cts.def
 
 # Creating an OpenROAD database to work with
 write_db pico_cts1.db
@@ -1164,7 +1164,7 @@ the following command
 package require openlane 0.9
 
 # Now we have to prep the design  
-prep -design picorv32a -tag 31-01_17-10
+prep -design picorv32a -tag 19-06_08-08
 
 # Check current def
 echo  $::env(CURRENT_DEF)
@@ -1182,7 +1182,7 @@ Commands to load PDN def in magic in another terminal
 
 ```bash
 # Change directory to path containing generated PDN def
-cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/tmp/floorplan/
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/19-06_08-08/tmp/floorplan/
 
 # Command to load the PDN def in magic tool
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read 14-pdn.def &
@@ -1217,7 +1217,7 @@ Commands to load routed def in magic in another terminal
 
 ```bash
 # Change directory to path containing routed def
-cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/results/routing/
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/19-06_08-08/results/routing/
 
 # Command to load the routed def in magic tool
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
@@ -1229,7 +1229,7 @@ Screenshots of routed def
 ![Screenshot from 2025-06-19 19-29-59](https://github.com/user-attachments/assets/bb46729a-d5ef-40c9-8b8d-b8c824e340ed)
 ![Screenshot from 2025-06-19 19-30-05](https://github.com/user-attachments/assets/c0cd0700-1913-4f27-a3bc-1e15922b966e)
 
-Screenshot of fast route guide present in `openlane/designs/picorv32a/runs/26-03_08-45/tmp/routing` directory
+Screenshot of fast route guide present in `openlane/designs/picorv32a/runs/19-06_08-08/tmp/routing` directory
 
 ![Screenshot from 2024-03-26 15-41-18](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/1dc38a57-03c9-45c3-acdb-063731a86433)
 
