@@ -434,7 +434,7 @@ Floorplanning defines the die/core dimensions, IO locations, cell rows, and powe
 ```
 run_floorplan
 ```
-![image.png](attachment:c9f0a694-2f6a-47a1-a46b-eff82b166481:image.png)
+
 ![Running Floorplan](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/fp_run.png)
 
 The `results/floorplan/` directory contains the output `.def` file, which encodes key geometric and placement information such as die area, core rows, pin locations, and macro outlines.
