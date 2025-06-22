@@ -960,6 +960,9 @@ sta pre_sta.conf
 
 ![Screenshot from 2025-06-19 03-50-17](https://github.com/user-attachments/assets/bcd648fb-64d4-45f7-b3b3-d649daefa2bf)
 We get a wns and slack violated value of -0.33 and tns value of -0.72, here we can see that the slack is violated.<br/><br/>
+
+In VLSI design, **slack** refers to the difference between the required arrival time and the actual arrival time of a signal at a timing endpoint, such as a flip-flop or output pin. It is a critical metric in **Static Timing Analysis (STA)** used to assess whether a digital circuit meets its timing constraints. A **positive slack** indicates that the signal arrived early enough, meaning the design meets timing and is said to have **"slack met"**. Conversely, a **negative slack** means the signal arrived late, resulting in a **"slack violation"**, which could cause incorrect functionality. Ensuring all paths have non-negative slack is essential for reliable operation, especially as designs become more complex and operate at higher clock frequencies. Therefore, slack plays a key role in achieving timing closure and guides optimization techniques like cell resizing, buffer insertion, and logic restructuring.
+
 Now, running the synthesis for minimized slack violation:<br/>
 ```
 # prep design so as to update variables
@@ -1175,9 +1178,6 @@ gen_pdn
 ![Screenshot from 2025-06-19 18-13-44](https://github.com/user-attachments/assets/e1eadb72-35fc-44e6-94ae-5807aaf933ac)
 ![Screenshot from 2025-06-19 18-13-48](https://github.com/user-attachments/assets/bb438636-b17c-4ecf-9d27-c15a75b4c6dd)
 
-<br/><br/>After running pdn, if we check CURRENT_DEF: ```echo  $::env(CURRENT_DEF)```, it is now changed from 'picorv32a.cts.def' to '17-pdn.def'<br/><br/>
-![](https://github.com/Samsh-Tabrej/nasscom-vsd-soc-design/blob/main/media/pdn_end_def.png)
-
 Commands to load PDN def in magic in another terminal
 
 ```bash
@@ -1193,7 +1193,7 @@ Screenshots of PDN def
 ![Screenshot from 2025-06-19 18-20-24](https://github.com/user-attachments/assets/ce64bb8c-df3a-41f8-ad8f-894e6309a4ec)
 ![Screenshot from 2025-06-19 18-20-33](https://github.com/user-attachments/assets/0b9b94db-fde0-46f0-85e6-df38497de47f)
 
-#### 2. Perfrom detailed routing using TritonRoute and explore the routed layout.
+#### Perfrom detailed routing using TritonRoute and explore the routed layout.
 
 Command to perform routing
 
@@ -1233,7 +1233,9 @@ Screenshot of fast route guide present in `openlane/designs/picorv32a/runs/19-06
 
 ![Screenshot from 2024-03-26 15-41-18](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/1dc38a57-03c9-45c3-acdb-063731a86433)
 
-#### 4. Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
+#### Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
+
+**Post-Route OpenSTA timing analysis with extracted parasitics** is a crucial step in the VLSI physical design flow where the timing of the design is re-evaluated after detailed routing is completed. At this stage, tools extract **parasitic effects** — such as resistance and capacitance — from the actual routed interconnects, which impact signal delay. These parasitics are saved in a **Standard Parasitic Exchange Format (SPEF)** file and used by **OpenSTA**, an open-source Static Timing Analysis tool, to perform a more accurate timing analysis that reflects real physical conditions. This post-route timing check helps identify any timing violations caused by routing-induced delays that may not have been visible earlier during synthesis or placement. It ensures that the design meets timing under realistic electrical conditions and is ready for signoff or further optimization.
 
 Commands to be run in OpenLANE flow to do OpenROAD timing analysis with integrated OpenSTA in OpenROAD
 
@@ -1242,10 +1244,10 @@ Commands to be run in OpenLANE flow to do OpenROAD timing analysis with integrat
 openroad
 
 # Reading lef file
-read_lef /openLANE_flow/designs/picorv32a/runs/26-03_08-45/tmp/merged.lef
+read_lef /openLANE_flow/designs/picorv32a/runs/19-06_08-08/tmp/merged.lef
 
 # Reading def file
-read_def /openLANE_flow/designs/picorv32a/runs/26-03_08-45/results/routing/picorv32a.def
+read_def /openLANE_flow/designs/picorv32a/runs/19-06_08-08/results/routing/picorv32a.def
 
 # Creating an OpenROAD database to work with
 write_db pico_route.db
@@ -1254,7 +1256,7 @@ write_db pico_route.db
 read_db pico_route.db
 
 # Read netlist post CTS
-read_verilog /openLANE_flow/designs/picorv32a/runs/26-03_08-45/results/synthesis/picorv32a.synthesis_preroute.v
+read_verilog /openLANE_flow/designs/picorv32a/runs/19-06_08-08/results/synthesis/picorv32a.synthesis_preroute.v
 
 # Read library for design
 read_liberty $::env(LIB_SYNTH_COMPLETE)
@@ -1263,13 +1265,13 @@ read_liberty $::env(LIB_SYNTH_COMPLETE)
 link_design picorv32a
 
 # Read in the custom sdc we created
-read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+read_sdc /openLANE_flow/designs/picorv32a/src/mybase.sdc
 
 # Setting all cloks as propagated clocks
 set_propagated_clock [all_clocks]
 
 # Read SPEF
-read_spef /openLANE_flow/designs/picorv32a/runs/26-03_08-45/results/routing/picorv32a.spef
+read_spef /openLANE_flow/designs/picorv32a/runs/19-06_08-085/results/routing/picorv32a.spef
 
 # Generating custom timing report
 report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
@@ -1279,14 +1281,24 @@ exit
 ```
 
 Screenshots of commands run and timing report generated
-![Screenshot from 2025-06-19 18-44-51](https://github.com/user-attachments/assets/3acac10f-9f4c-430f-916e-0e0c1bb5037c)
-![Screenshot from 2025-06-19 18-49-10](https://github.com/user-attachments/assets/c716d74e-325c-4782-b03f-a27505fb39a7)
-![Screenshot from 2025-06-19 18-49-22](https://github.com/user-attachments/assets/9f7d8f0a-afde-440c-8cd6-18196030dc13)
-![Screenshot from 2025-06-19 18-49-24](https://github.com/user-attachments/assets/932265c3-69bb-48f2-9615-b7c45a1e1a9c)
-![Screenshot from 2025-06-19 18-49-26](https://github.com/user-attachments/assets/f6566696-13a5-4abc-b5d7-7d2452ca4286)
-![Screenshot from 2025-06-19 18-49-28](https://github.com/user-attachments/assets/db5666e6-918d-4cd8-bcde-208ecf39a355)
-![Screenshot from 2025-06-19 18-49-29](https://github.com/user-attachments/assets/e531a044-f8c1-45ca-aa1f-fe1e422921b9)
-![Screenshot from 2025-06-19 18-49-30](https://github.com/user-attachments/assets/f17b428e-0fb5-493d-8422-9b9d9c526e0c)
+
+![Screenshot from 2025-06-22 11-44-00](https://github.com/user-attachments/assets/6c820c73-56e8-4469-89f3-3869395e787f)
+![Screenshot from 2025-06-22 11-44-17](https://github.com/user-attachments/assets/3f16d691-cd7c-47d4-9a27-55253a3e7ad5)
+![Screenshot from 2025-06-22 11-44-28](https://github.com/user-attachments/assets/bd8e24ae-c298-4a60-a89c-b256356704dc)
+![Screenshot from 2025-06-22 11-44-35](https://github.com/user-attachments/assets/49e81948-5956-4f29-a883-ea3448738423)
+
+In both the cases we can see that the slack came out to be 0.0491 and 2.8575 and the slack requirements were MET and not violated.
+
+Here are the screenshots of the def file of the final design after some important steps in the flow.
+
+After Placement 
+![picorv32a placement def](https://github.com/user-attachments/assets/3c2e17b6-92a0-4950-b8e3-6acbbd547aac)
+
+After Clock-Tree Synthesis
+![picorv32a cts def](https://github.com/user-attachments/assets/63cab824-3afb-43d7-a5b7-6f68b71d1aef)
+
+The screenshot of the final design after the completion of the ASIC Design FLow
+![picorv32a def](https://github.com/user-attachments/assets/a456742a-694e-4753-9ac7-5d4deecb1a6f)
 
 <br/><br/>
 # Acknowledgements
